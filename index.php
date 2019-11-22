@@ -9,7 +9,7 @@ $userslist = $users->fetchAll(PDO::FETCH_ASSOC);
 $issues = $conn->query("SELECT * FROM issues");
 $issueslist = $issues->fetchAll(PDO::FETCH_ASSOC);
 
- if(isset($_REQUEST['display_users'])){
+ if(isset($_GET['display_users'])){
     foreach ($userslist as $user):
         $line=$user['id'].','.$user['lastname'] .','.$user['firstname'];
         echo $line;
@@ -19,7 +19,7 @@ $issueslist = $issues->fetchAll(PDO::FETCH_ASSOC);
 
 	}
 	
- if(isset($_REQUEST['display_issues'])){
+ if(isset($_GET['display_issues'])){
     foreach ($issueslist as $issue):
         $line=$issue['id'].','.$issue['title'] .','.$issue['priority'];
         echo $line;

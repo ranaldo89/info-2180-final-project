@@ -1,0 +1,29 @@
+.header {
+	grid-area: header;
+	display: flex;
+	flex-direction: column;
+	line-height: 0.1;
+	color: white;
+	text-align: center;
+	background-color: blue;
+	padding: 20px;
+}
+
+.menu {
+	grid-area: menu;
+	background-color: black;
+	line-height: 2;
+	padding: 30px;
+}
+
+.body {
+	grid-area: main;
+	background-color: green;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-areas: 'header header header header ' 'menu main main main ';
+	grid-gap: 10px;
+	padding: 10px;
+}
