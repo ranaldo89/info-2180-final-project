@@ -5,10 +5,35 @@
          <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  Username:<br>
+  <input id="usernameField" type="text" name="username" >
+  <br>
+  Password:<br>
+  <input id= "passwordField" type="text" name="password" >
+  <br><br>
+  <input id="loginButton" type="submit" value="Submit">
+  </div>
+
+</div>
        <div class="grid-container">
-           <div class="header"></div> <!-- Header -->
-           <div class="menu"></div> <!-- Menu -->
-           <div class="body"></div> <!-- Body. -->
+           <div class="header">
+               <h1>BugMe Issue Tracker</h1>
+           </div> <!-- Header -->
+           <div class="menu">
+                <button id="home" type="button">Home</button>
+                <br>
+                <button id="addUser"  type="button">Add User</button> 
+                <br>
+                <button id="addIssue"  type="button">New Issue</button> 
+                <br>
+                <button id="logout"  type="button">Logout</button> 
+           </div> <!-- Menu -->
+           <div id="body" class="body"></div> <!-- Body. -->
        </div> 
     </body>
+      <script src="app.js"></script> 
 </html>
