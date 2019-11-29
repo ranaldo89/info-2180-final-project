@@ -48,6 +48,7 @@ window.onload = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
                 bodyDiv.innerHTML = response;
+
             }
         };
         httpRequest.open('GET', url + "?home=true", true);
@@ -61,6 +62,7 @@ window.onload = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
                 bodyDiv.innerHTML = response;
+
             }
         };
         httpRequest.open('GET', url + "?new_issue=true", true);
@@ -73,7 +75,6 @@ window.onload = function() {
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
-                bodyDiv.innerHTML = response;
             }
         };
         httpRequest.open('GET', url + "?logout=true", true);

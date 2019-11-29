@@ -13,7 +13,10 @@ $issueslist = $issues->fetchAll(PDO::FETCH_ASSOC);
 if(isset($_GET['email']) && isset($_GET['password'])){
     foreach ($userslist as $user):
     if ($user['email']==$_GET['email'] && $user['password']==$_GET['password']){
-            echo "true";
+        session_start();
+        $_SESSION['email']=$_GET['email'];
+        $_SESSION['password']=$_GET['password'];
+        echo "true";
     }
     endforeach;
 
@@ -67,7 +70,6 @@ if(isset($_GET['Firstname']) && isset($_GET['Lastname']) && isset($_GET['Passwor
     $conn->query(str_replace('#', '"',"INSERT INTO users (id, firstname, lastname,password,email,date_joined)
         VALUES (#$id#,#$firstname#, #$lastname#, #$password#,#$email#,#$date_joined#); "));
 }
-
 if(isset($_GET['new_issue'])){
 	    echo "<h1>New Issue</h1>";
 	    echo "Title:<br>";
@@ -86,7 +88,7 @@ if(isset($_GET['new_issue'])){
         echo str_replace('#', '"',"<input type=#text# name=#Priority# >");
 	    echo "<br>";
         echo "<br>";
-        echo str_replace('#', '"', "<input type=#submit# value=#Submit#>");
+        echo str_replace('#', '"', "<input id=#submitIssue# type=#submit# value=#Submit#>");
     
 }
 
@@ -95,7 +97,9 @@ if(isset($_GET['home'])){
 }
 
 if(isset($_GET['logout'])){
-	    echo "<h1>Logout</h1>";
+	    
+	    session_unset();
+	    session_destroy(); 
     
 }
 
