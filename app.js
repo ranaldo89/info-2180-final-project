@@ -10,10 +10,62 @@ window.onload = function() {
     var modal = document.getElementById("myModal");
     var httpRequest = new XMLHttpRequest();
     var url = "/index.php";
+    var homeDiv = document.getElementById("homeDiv");
+    var addUserDiv = document.getElementById("addUserDiv");
+    var addIssueDiv = document.getElementById("addIssueDiv");
+    var addUserFirstName=document.getElementById("addUserFirstName");
+    var addUserLastName=document.getElementById("addUserLastName");
+    var addUserEmail=document.getElementById("addUserEmail");
+    var addUserPassword=document.getElementById("addUserPassword");
+    var addUserSubmit=document.getElementById("addUserSubmit");
+    var addIssueTitle=document.getElementById("addIssueTitle");
+    var addIssueDescription=document.getElementById("addIssueDescription");
+    var addIssueAssignedTo=document.getElementById("addIssueAssignedTo");
+    var addIssueType=document.getElementById("addIssueType");
+    var addIssuePriority=document.getElementById("addIssuePriority");
+    var addIssueSubmit=document.getElementById("addIssueSubmit");
+    var createIssueBtn=document.getElementById("createIssueBtn");
+    var allBtn=document.getElementById("allBtn");
+    var openBtn=document.getElementById("openBtn");
+    var issueTable=document.getElementById("issueTable");
     //modal.style.display = "block";
-
-
-
+    homeDiv.style.display="block";
+    addUserDiv.style.display = "none";
+    addIssueDiv.style.display = "none";
+    
+    
+    addUserSubmit.addEventListener("click",function() {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                var response = httpRequest.responseText;
+                //    addUserFirstName.value="";
+                 //   addUserLastName.value="";
+                 //   addUserEmail.value="";
+                 //   addUserPassword.value="";
+            }
+        httpRequest.open('GET', url + "?Firstname=" + addUserFirstName.value + 
+        "&Lastname=" + addUserLastName.value + 
+        "&Email=" + addUserEmail.value+ 
+        "&Password=" + addUserPassword.value, true);
+        httpRequest.send();        
+    });
+    
+    addIssueSubmit.addEventListener("click",function() {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                var response = httpRequest.responseText;
+                    //addIssueTitle.value="";
+                  //  addIssueDescription.value="";
+                  //  addIssueAssignedTo.value="";
+                  //  addIssueType.value="";
+                  //  addIssuePriority.value="";                    
+            }
+        httpRequest.open('GET', url + "?title=" + addIssueTitle.value + 
+        "&description=" + addIssueDescription.value + 
+        "&assignedto=" + addIssueAssignedTo.value+ 
+        "&type=" + addIssueType.value+ 
+        "&priority=" + addIssuePriority.value, true);
+        httpRequest.send();        
+    });
+        
 
     loginButton.addEventListener("click", function() {
         httpRequest.onreadystatechange = function() {
@@ -31,53 +83,69 @@ window.onload = function() {
     });
 
     addUser.addEventListener("click", function() {
-        httpRequest.onreadystatechange = function() {
-            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-                var response = httpRequest.responseText;
-                bodyDiv.innerHTML = response;
-            }
-        };
-        httpRequest.open('GET', url + "?new_user=true", true);
-        console.log(httpRequest);
+                homeDiv.style.display="none";
+                addUserDiv.style.display = "block";
+                addIssueDiv.style.display = "none";
 
-        httpRequest.send();
     });
 
     homeBtn.addEventListener("click", function() {
-        httpRequest.onreadystatechange = function() {
-            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-                var response = httpRequest.responseText;
-                bodyDiv.innerHTML = response;
 
-            }
-        };
-        httpRequest.open('GET', url + "?home=true", true);
-        console.log(httpRequest);
+                homeDiv.style.display="block";
+                addUserDiv.style.display = "none";
+                addIssueDiv.style.display = "none";
 
-        httpRequest.send();
     });
 
+    createIssueBtn.addEventListener("click", function() {
+
+                homeDiv.style.display="none";
+                addUserDiv.style.display = "none";
+                addIssueDiv.style.display = "block";
+
+    });
     addIssue.addEventListener("click", function() {
+
+                homeDiv.style.display="none";
+                addUserDiv.style.display = "none";
+                addIssueDiv.style.display = "block";
+
+    });
+
+
+    allBtn.addEventListener("click",function() {
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
-                bodyDiv.innerHTML = response;
-
+                        issueTable.innerHTML=response;
             }
         };
-        httpRequest.open('GET', url + "?new_issue=true", true);
+        httpRequest.open('GET', url + "?display_issues", true);
         console.log(httpRequest);
-
         httpRequest.send();
-    });
+        
 
+    });
+    openBtn.addEventListener("click",function() {
+        httpRequest.onreadystatechange = function() {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                var response = httpRequest.responseText;
+                        issueTable.innerHTML=response;
+            }
+        };
+        httpRequest.open('GET', url + "?display_issues_open", true);
+        console.log(httpRequest);
+        httpRequest.send();
+        
+
+    });    
     logout.addEventListener("click", function() {
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
             }
         };
-        httpRequest.open('GET', url + "?logout=true", true);
+        httpRequest.open('GET', url + "?logout", true);
         console.log(httpRequest);
         httpRequest.send();
         modal.style.display = "block";

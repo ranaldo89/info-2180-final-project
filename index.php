@@ -16,6 +16,7 @@ if(isset($_GET['email']) && isset($_GET['password'])){
         session_start();
         $_SESSION['email']=$_GET['email'];
         $_SESSION['password']=$_GET['password'];
+        
         echo "true";
     }
     endforeach;
@@ -34,13 +35,28 @@ if(isset($_GET['display_users'])){
 	}
 	
 if(isset($_GET['display_issues'])){
+    echo "Title,type,status,assigned to,created";
+    echo "<br>";
     foreach ($issueslist as $issue):
-        $line=$issue['id'].','.$issue['title'] .','.$issue['priority'];
+        $line=$issue['id'].','.$issue['title'] .','.$issue['type'].','.$issue['assigned_to'].','.$issue['created'];
         echo $line;
         echo "<br>";
         
     endforeach;
 }
+if(isset($_GET['display_issues_open'])){
+    echo "Title,type,status,assigned to,created";
+    echo "<br>";
+    foreach ($issueslist as $issue):
+        if (strcmp($issue['status'], 'OPEN') == 0){
+        $line=$issue['id'].','.$issue['title'] .','.$issue['type'].','.$issue['assigned_to'].','.$issue['created'];
+        echo $line;
+        echo "<br>";
+        }
+    endforeach;
+}
+
+
 if(isset($_GET['new_user'])){
         echo "<h1>New User</h1>";
         echo "First name:<br>";
@@ -66,9 +82,27 @@ if(isset($_GET['Firstname']) && isset($_GET['Lastname']) && isset($_GET['Passwor
     $password=$_GET['Password'];
     $email=$_GET['Email'];
     $date_joined="Test";
-    $id=1004;
+    $id=rand();
     $conn->query(str_replace('#', '"',"INSERT INTO users (id, firstname, lastname,password,email,date_joined)
         VALUES (#$id#,#$firstname#, #$lastname#, #$password#,#$email#,#$date_joined#); "));
+}
+
+
+if(isset($_GET['title']) && isset($_GET['description']) && isset($_GET['assignedto']) && isset($_GET['type'])
+&& isset($_GET['priority'])){
+    $title=$_GET['title'];
+    $description=$_GET['description'];
+    $assignedto=$_GET['assignedto'];
+    $type=$_GET['type'];
+    $priority=$_GET['priority'];
+    $status="OPEN";
+    $createdBy="";
+    $created="";
+    $updated="";
+    $id=rand();
+    $conn->query(str_replace('#', '"',"INSERT INTO issues 
+    VALUES (#$id#,#$title#,#$description#, #$type#, #$priority#,#$status#,#$assignedto#,#$createdBy#,#$created#,#$updated#); "));
+    
 }
 if(isset($_GET['new_issue'])){
 	    echo "<h1>New Issue</h1>";

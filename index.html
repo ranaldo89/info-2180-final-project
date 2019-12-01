@@ -32,7 +32,59 @@
                 <br>
                 <button id="logout"  type="button">Logout</button> 
            </div> <!-- Menu -->
-           <div id="body" class="body"></div> <!-- Body. -->
+           <div id="body" class="body">
+               <div id="homeDiv" >
+                   Issues
+                   <input id="createIssueBtn" type="submit" value="Create New Issue">
+                   <br>
+                   <br>
+                   <br>
+                   Filter by: <input id="allBtn" type="submit" value="ALL"> 
+                   <input id="openBtn" type="submit" value="OPEN">
+                   <input id="myTicketBtn" type="submit" value="MY TICKET">
+                   <div id="issueTable"></div>
+               </div>
+               
+               <div id="addUserDiv">
+                     <h1>New User</h1>
+                     First name:<br>
+                     <input id="addUserFirstName" type="text" name="firstname">
+                     <br>
+                     Last name:<br>
+                     <input id="addUserLastName" type="text" name="lastname">
+                     <br>
+                     Password:<br>
+                     <input id="addUserPassword" type="text" name="password">                     
+                     <br>
+                     Email:<br>
+                     <input id="addUserEmail" type="text" name="email">
+                     <br>
+                     <br>
+                     <input id="addUserSubmit" type="submit" value="Submit">
+               
+               </div>
+               
+               <div id="addIssueDiv">
+                     <h1>New Issue</h1>
+                     Title:<br>
+                     <input id="addIssueTitle" type="text" name="title">
+                     <br>
+                     Description:<br>
+                     <input id="addIssueDescription" type="text" name="description">
+                     <br>
+                     Assigned to:<br>
+                     <input id="addIssueAssignedTo" type="text" name="assignedto">                     
+                     <br>
+                     Type:<br>
+                     <input id="addIssueType" type="text" name="type">                     
+                     <br>                     
+                     Priority:<br>
+                     <input id="addIssuePriority" type="text" name="priority">
+                     <br>
+                     <br>
+                     <input id="addIssueSubmit" type="submit" value="Submit">
+               </div>
+           </div> <!-- Body. -->
        </div> 
     </body>
       <script src="app.js"></script> 
