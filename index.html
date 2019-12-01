@@ -1,28 +1,36 @@
 <!DOCTYPE HTML>
 <html>
+    
     <head>
+        
         <title>BugMe Issue Tracker</title>
+        
          <link rel="stylesheet" type="text/css" href="style.css" />
+         
     </head>
+    
     <body>
+        
     <div id="myModal" class="modal">
 
-  <!-- Modal content -->
   <div class="modal-content">
   Username:<br>
-  <input id="usernameField" type="text" name="username" >
+  <input id="usernameField" type="text" name="username" required>
   <br>
   Password:<br>
-  <input id= "passwordField" type="text" name="password" >
+  <input id= "passwordField" type="password" name="password" required>
   <br><br>
-  <input id="loginButton" type="submit" value="Submit">
+  <input id="loginButton" type="submit" value="Submit" >
   </div>
 
 </div>
+
        <div class="grid-container">
+           
            <div class="header">
                <h1>BugMe Issue Tracker</h1>
-           </div> <!-- Header -->
+           </div>
+           
            <div class="menu">
                 <button id="home" type="button">Home</button>
                 <br>
@@ -31,8 +39,10 @@
                 <button id="addIssue"  type="button">New Issue</button> 
                 <br>
                 <button id="logout"  type="button">Logout</button> 
-           </div> <!-- Menu -->
+           </div> 
+           
            <div id="body" class="body">
+               
                <div id="homeDiv" >
                    Issues
                    <input id="createIssueBtn" type="submit" value="Create New Issue">
@@ -48,16 +58,16 @@
                <div id="addUserDiv">
                      <h1>New User</h1>
                      First name:<br>
-                     <input id="addUserFirstName" type="text" name="firstname">
+                     <input id="addUserFirstName" type="text" name="firstname" >
                      <br>
                      Last name:<br>
-                     <input id="addUserLastName" type="text" name="lastname">
+                     <input id="addUserLastName" type="text" name="lastname" >
                      <br>
                      Password:<br>
-                     <input id="addUserPassword" type="text" name="password">                     
+                     <input id="addUserPassword" type="password" name="password" >                     
                      <br>
                      Email:<br>
-                     <input id="addUserEmail" type="text" name="email">
+                     <input id="addUserEmail" type="text" name="email" >
                      <br>
                      <br>
                      <input id="addUserSubmit" type="submit" value="Submit">
@@ -84,8 +94,13 @@
                      <br>
                      <input id="addIssueSubmit" type="submit" value="Submit">
                </div>
-           </div> <!-- Body. -->
+               
+           </div>
+           
        </div> 
+       
     </body>
+    
       <script src="app.js"></script> 
+      
 </html>

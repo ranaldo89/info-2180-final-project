@@ -5,13 +5,13 @@
 	line-height: 0.1;
 	color: white;
 	text-align: center;
-	background-color: blue;
+	background-color: black;
 	padding: 20px;
 }
 
 .menu {
 	grid-area: menu;
-	background-color: red;
+	background-color: gray;
 	line-height: 2;
 	padding: 30px;
 }
@@ -50,17 +50,32 @@
   width: 80%;
 }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: white;
+  color: black;
+}
+
+input[type="submit"]{
+  border-radius: 10px;
+  background: blue;
+  padding: 5px;
+  color: white;
+}
+
+button[type="button"]{
+
 }

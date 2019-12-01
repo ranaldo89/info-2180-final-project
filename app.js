@@ -28,6 +28,7 @@ window.onload = function() {
     var allBtn=document.getElementById("allBtn");
     var openBtn=document.getElementById("openBtn");
     var issueTable=document.getElementById("issueTable");
+    var myTicketBtn=document.getElementById("myTicketBtn");
     //modal.style.display = "block";
     homeDiv.style.display="block";
     addUserDiv.style.display = "none";
@@ -37,35 +38,35 @@ window.onload = function() {
     addUserSubmit.addEventListener("click",function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
-                //    addUserFirstName.value="";
-                 //   addUserLastName.value="";
-                 //   addUserEmail.value="";
-                 //   addUserPassword.value="";
+
             }
         httpRequest.open('GET', url + "?Firstname=" + addUserFirstName.value + 
         "&Lastname=" + addUserLastName.value + 
         "&Email=" + addUserEmail.value+ 
         "&Password=" + addUserPassword.value, true);
-        httpRequest.send();        
+        httpRequest.send();
+        addUserFirstName.value="";
+        addUserLastName.value="";
+        addUserEmail.value="";
+        addUserPassword.value="";        
     });
     
     addIssueSubmit.addEventListener("click",function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;
-                    //addIssueTitle.value="";
-                  //  addIssueDescription.value="";
-                  //  addIssueAssignedTo.value="";
-                  //  addIssueType.value="";
-                  //  addIssuePriority.value="";                    
             }
         httpRequest.open('GET', url + "?title=" + addIssueTitle.value + 
         "&description=" + addIssueDescription.value + 
         "&assignedto=" + addIssueAssignedTo.value+ 
         "&type=" + addIssueType.value+ 
         "&priority=" + addIssuePriority.value, true);
-        httpRequest.send();        
+        httpRequest.send();
+        addIssueTitle.value="";
+        addIssueDescription.value="";
+        addIssueAssignedTo.value="";
+        addIssueType.value="";
+        addIssuePriority.value="";   
     });
-        
 
     loginButton.addEventListener("click", function() {
         httpRequest.onreadystatechange = function() {
@@ -104,6 +105,7 @@ window.onload = function() {
                 addIssueDiv.style.display = "block";
 
     });
+    
     addIssue.addEventListener("click", function() {
 
                 homeDiv.style.display="none";
@@ -111,7 +113,6 @@ window.onload = function() {
                 addIssueDiv.style.display = "block";
 
     });
-
 
     allBtn.addEventListener("click",function() {
         httpRequest.onreadystatechange = function() {
@@ -126,6 +127,7 @@ window.onload = function() {
         
 
     });
+    
     openBtn.addEventListener("click",function() {
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
@@ -138,7 +140,22 @@ window.onload = function() {
         httpRequest.send();
         
 
-    });    
+    });
+    
+    myTicketBtn.addEventListener("click",function() {
+        httpRequest.onreadystatechange = function() {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                var response = httpRequest.responseText;
+                        issueTable.innerHTML=response;
+            }
+        };
+        httpRequest.open('GET', url + "?display_issues_tickets", true);
+        console.log(httpRequest);
+        httpRequest.send();
+        
+
+    });
+
     logout.addEventListener("click", function() {
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
