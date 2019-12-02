@@ -44,30 +44,37 @@
            <div id="body" class="body">
                
                <div id="homeDiv" >
-                   Issues
+                   <h2>Issues</h2>
                    <input id="createIssueBtn" type="submit" value="Create New Issue">
                    <br>
                    <br>
                    <br>
-                   Filter by: <input id="allBtn" type="submit" value="ALL"> 
+                   <strong> Filter by:</strong> <input id="allBtn" type="submit" value="ALL"> 
                    <input id="openBtn" type="submit" value="OPEN">
                    <input id="myTicketBtn" type="submit" value="MY TICKET">
+                   <br>
+                   <br>
                    <div id="issueTable"></div>
+                   
                </div>
                
                <div id="addUserDiv">
                      <h1>New User</h1>
-                     First name:<br>
+                     <strong>First name:</strong><br>
                      <input id="addUserFirstName" type="text" name="firstname" >
                      <br>
-                     Last name:<br>
+                     <br>
+                     <strong>Last name:</strong><br>
                      <input id="addUserLastName" type="text" name="lastname" >
                      <br>
-                     Password:<br>
+                     <br>
+                     <strong>Password:</strong><br>
                      <input id="addUserPassword" type="password" name="password" >                     
                      <br>
-                     Email:<br>
+                     <br>
+                     <strong>Email:</strong><br>
                      <input id="addUserEmail" type="text" name="email" >
+                     <br>
                      <br>
                      <br>
                      <input id="addUserSubmit" type="submit" value="Submit">
@@ -76,20 +83,35 @@
                
                <div id="addIssueDiv">
                      <h1>New Issue</h1>
-                     Title:<br>
+                     <strong>Title:</strong><br>
                      <input id="addIssueTitle" type="text" name="title">
                      <br>
-                     Description:<br>
+                     <br>
+                     <strong>Description:</strong><br>
                      <input id="addIssueDescription" type="text" name="description">
                      <br>
-                     Assigned to:<br>
-                     <input id="addIssueAssignedTo" type="text" name="assignedto">                     
                      <br>
-                     Type:<br>
-                     <input id="addIssueType" type="text" name="type">                     
-                     <br>                     
-                     Priority:<br>
-                     <input id="addIssuePriority" type="text" name="priority">
+                     <strong>Assigned to:</strong><br>
+                     <select id="addIssueAssignedTo">
+                         <option value="cdsoftwaresja@gmail.com">Carl Duncan</option>
+                     </select>                     
+                     <br>
+                     <br>
+                     <strong>Type:</strong><br>
+                     <select id="addIssueType">
+                        <option value="Bug">Bug</option>
+                        <option value="Error">Error</option>
+                        <option value="Query">Query</option>
+                     </select>
+                     <br>
+                     <br>
+                     <strong>Priority:</strong><br>
+                     <select id="addIssuePriority">
+                        <option value="LOW">Low</option>
+                        <option value="MEDIUM">Medium</option>
+                        <option value="HIGH">High</option>
+                     </select>
+                     <br>
                      <br>
                      <br>
                      <input id="addIssueSubmit" type="submit" value="Submit">

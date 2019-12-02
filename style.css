@@ -70,12 +70,21 @@ th {
 }
 
 input[type="submit"]{
-  border-radius: 10px;
+  font-weight: bold;
+  border-radius: 5px;
   background: blue;
-  padding: 5px;
+  padding: 5px 20px;
   color: white;
 }
 
 button[type="button"]{
 
+}
+
+input[type="text"],input[type="password"]{
+  border-radius: 2px;
+}
+
+strong{
+  color:gray;
 }

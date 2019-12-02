@@ -35,6 +35,17 @@ window.onload = function() {
     addIssueDiv.style.display = "none";
     
     
+    
+    httpRequest.onreadystatechange = function() {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                var response = httpRequest.responseText;
+                        issueTable.innerHTML=response;
+            }
+        };
+        httpRequest.open('GET', url + "?display_issues", true);
+        console.log(httpRequest);
+        httpRequest.send();    
+    
     addUserSubmit.addEventListener("click",function() {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 var response = httpRequest.responseText;

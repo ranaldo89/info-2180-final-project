@@ -18,7 +18,8 @@ if(isset($_GET['session_id'])){
 if(isset($_GET['email']) && 
 isset($_GET['password'])){
     foreach ($userslist as $user):
-    if ($user['email']==$_GET['email'] && $user['password']==$_GET['password']){
+    if ($user['email']==$_GET['email'] && 
+    password_verify($_GET['password'], $user['password'])){
         session_start();
         $_SESSION['email']=$user['email'];
         $_SESSION['password']=$user['password'];
@@ -136,7 +137,7 @@ isset($_GET['Password']) &&
 isset($_GET['Email'])){
     $firstname=$_GET['Firstname'];
     $lastname=$_GET['Lastname'];
-    $password=$_GET['Password'];
+    $password=password_hash($_GET['Password'], PASSWORD_DEFAULT);
     $email=$_GET['Email'];
     $date_joined=date("Y/m/d");;
     $id=rand();
