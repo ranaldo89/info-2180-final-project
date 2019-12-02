@@ -4,7 +4,7 @@
 	flex-direction: column;
 	line-height: 0.1;
 	color: white;
-	text-align: center;
+	text-align: left;
 	background-color: black;
 	padding: 20px;
 }
@@ -13,7 +13,7 @@
 	grid-area: menu;
 	background-color: gray;
 	line-height: 2;
-	padding: 30px;
+	padding: 20px;
 }
 
 .body {
@@ -75,14 +75,20 @@ input[type="submit"]{
   background: blue;
   padding: 5px 20px;
   color: white;
+  outline: none;
+  border:none;
 }
 
 button[type="button"]{
-
+    background-color: white;
+    outline: none;
+    border:none;
 }
 
 input[type="text"],input[type="password"]{
   border-radius: 2px;
+  
+
 }
 
 strong{

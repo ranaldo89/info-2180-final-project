@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $host = getenv('IP');
 $username = 'Cduncan';
 $password = 'Damdog_101';
@@ -9,10 +10,6 @@ $userslist = $users->fetchAll(PDO::FETCH_ASSOC);
 $issues = $conn->query("SELECT * FROM issues");
 $issueslist = $issues->fetchAll(PDO::FETCH_ASSOC);
 
-#Session
-if(isset($_GET['session_id'])){
-    echo $_SESSION['id'];
-}
 
 # Login and set session variables
 if(isset($_GET['email']) && 
@@ -20,7 +17,7 @@ isset($_GET['password'])){
     foreach ($userslist as $user):
     if ($user['email']==$_GET['email'] && 
     password_verify($_GET['password'], $user['password'])){
-        session_start();
+
         $_SESSION['email']=$user['email'];
         $_SESSION['password']=$user['password'];
         $_SESSION['id']=$user['id'];
@@ -29,6 +26,12 @@ isset($_GET['password'])){
     endforeach;
 
 	}
+	
+	
+#Session
+if(isset($_GET['session_id'])){
+    echo $_SESSION['email'];
+}
 
 # Display all users
 if(isset($_GET['display_users'])){
@@ -59,7 +62,7 @@ if(isset($_GET['display_issues'])){
         $assigned_to=$issue['assigned_to'];
         $created=$issue['created'];
         echo "<tr>";
-        echo "    <th>$id.$title</th>";
+        echo "    <th>$id $title</th>";
         echo "    <th>$type</th>";
         echo "    <th>$status</th>";
         echo "    <th>$assigned_to</th>";
@@ -89,7 +92,7 @@ if(isset($_GET['display_issues_open'])){
         $assigned_to=$issue['assigned_to'];
         $created=$issue['created'];
         echo "<tr>";
-        echo "    <th>$id.$title</th>";
+        echo "    <th>$id $title</th>";
         echo "    <th>$type</th>";
         echo "    <th>$status</th>";
         echo "    <th>$assigned_to</th>";
@@ -111,7 +114,7 @@ if(isset($_GET['display_issues_tickets'])){
         echo "    <th>Created</th>";
         echo "  </tr>";
     foreach ($issueslist as $issue):
-        if (strcmp($issue['created_by'], $_SESSION['email']) == 0){
+        if (strcmp($issue['assigned_to'], $_SESSION['email']) == 0){
         $id=$issue['id'];
         $title=$issue['title'];
         $type=$issue['type'];
@@ -119,7 +122,7 @@ if(isset($_GET['display_issues_tickets'])){
         $assigned_to=$issue['assigned_to'];
         $created=$issue['created'];
         echo "<tr>";
-        echo "    <th>$id.$title</th>";
+        echo "    <th>$id $title</th>";
         echo "    <th>$type</th>";
         echo "    <th>$status</th>";
         echo "    <th>$assigned_to</th>";
